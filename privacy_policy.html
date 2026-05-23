@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holzrechner – Datenschutzerklärung / Privacy Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wood-dark: #3d2b1f;
+      --wood-mid:  #6b4226;
+      --wood-warm: #a0522d;
+      --wood-light:#d4956a;
+      --wood-pale: #f5e6d3;
+      --cream:     #fdf8f2;
+      --text:      #2a1a0e;
+      --text-soft: #5c3d28;
+      --ring:      #c8855a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── wood grain top bar ── */
+    .topbar {
+      height: 6px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--wood-dark)  0px,  var(--wood-dark)  2px,
+        var(--wood-mid)   2px,  var(--wood-mid)   5px,
+        var(--wood-warm)  5px,  var(--wood-warm)  8px,
+        var(--wood-light) 8px,  var(--wood-light) 11px,
+        var(--wood-mid)   11px, var(--wood-mid)   15px
+      );
+    }
+
+    header {
+      background: var(--wood-dark);
+      padding: 48px 24px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        170deg,
+        transparent 0px, transparent 18px,
+        rgba(255,255,255,0.03) 18px, rgba(255,255,255,0.03) 20px
+      );
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .logo-icon {
+      width: 52px; height: 52px;
+      background: var(--wood-light);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+    }
+
+    .logo-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--wood-pale);
+      letter-spacing: 0.5px;
+    }
+
+    .logo-sub {
+      font-size: 12px;
+      color: var(--wood-light);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: block;
+      text-align: left;
+      margin-top: 2px;
+    }
+
+    header p {
+      color: var(--wood-light);
+      font-size: 14px;
+      position: relative;
+      opacity: 0.85;
+    }
+
+    /* ── language switcher ── */
+    .lang-bar {
+      background: var(--wood-mid);
+      padding: 12px 24px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+      border-bottom: 2px solid var(--wood-warm);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: var(--wood-pale);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .lang-btn:hover { background: rgba(255,255,255,0.12); }
+
+    .lang-btn.active {
+      background: var(--wood-light);
+      border-color: var(--wood-light);
+      color: var(--wood-dark);
+      font-weight: 600;
+    }
+
+    /* ── content ── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--wood-dark);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--wood-warm);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-subtitle::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--wood-light);
+      opacity: 0.4;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(160, 82, 45, 0.12);
+      box-shadow: 0 2px 16px rgba(61, 43, 31, 0.06);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .card-icon {
+      width: 38px; height: 38px;
+      background: var(--wood-pale);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--wood-dark);
+    }
+
+    .card p, .card li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-soft);
+    }
+
+    .card ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .card li { margin-bottom: 6px; }
+
+    .highlight {
+      background: var(--wood-pale);
+      border-left: 3px solid var(--wood-warm);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--wood-dark);
+      font-weight: 500;
+    }
+
+    footer {
+      background: var(--wood-dark);
+      color: var(--wood-light);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+    }
+
+    footer a { color: var(--wood-light); }
+
+    @media (max-width: 480px) {
+      .card { padding: 20px 18px; }
+      .section-title { font-size: 26px; }
+      .logo-text { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">🌲</div>
+    <div>
+      <span class="logo-text">Holzrechner</span>
+      <span class="logo-sub">Timber Calculator</span>
+    </div>
+  </div>
+  <p>Datenschutzerklärung · Privacy Policy · Politica de confidențialitate</p>
+</header>
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('de')">🇩🇪 Deutsch</button>
+  <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+  <button class="lang-btn" onclick="setLang('ro')">🇷🇴 Română</button>
+  <button class="lang-btn" onclick="setLang('ru')">🇷🇺 Русский</button>
+  <button class="lang-btn" onclick="setLang('fr')">🇫🇷 Français</button>
+  <button class="lang-btn" onclick="setLang('it')">🇮🇹 Italiano</button>
+  <button class="lang-btn" onclick="setLang('es')">🇪🇸 Español</button>
+</div>
+
+<div class="container">
+
+  <!-- ═══════════════ DEUTSCH ═══════════════ -->
+  <div class="lang-section active" id="lang-de">
+    <div class="section-title">Datenschutzerklärung</div>
+    <div class="section-subtitle">Holzrechner · Stand: 2025</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Überblick</div>
+      </div>
+      <p>Diese App (Holzrechner / Timber Calculator) wurde entwickelt, um Holzmengen zu berechnen und Inventar zu verwalten. Der Schutz Ihrer Daten ist uns wichtig. Diese Datenschutzerklärung erläutert, welche Daten die App verarbeitet.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💾</div>
+        <div class="card-title">Gespeicherte Daten</div>
+      </div>
+      <p>Die App speichert ausschließlich folgende Daten <strong>lokal auf Ihrem Gerät</strong>:</p>
+      <ul>
+        <li>Auftragsnummern und Kundennamen</li>
+        <li>Holzmaße (Stärke, Länge, Breite)</li>
+        <li>Inventurdaten (Kantel, Vollholz, Platten)</li>
+        <li>App-Einstellungen (Sprache, Design)</li>
+        <li>Exportierte PDF- und Excel-Dateien im Download-Ordner</li>
+      </ul>
+      <div class="highlight">✅ Es werden keine Daten an externe Server oder Dritte übertragen.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📁</div>
+        <div class="card-title">Speicherzugriff</div>
+      </div>
+      <p>Die App benötigt Zugriff auf den Gerätespeicher ausschließlich zum Erstellen von PDF- und Excel-Dateien im Download-Ordner. Dieser Zugriff wird nur für den Dateiexport verwendet.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Keine Datenerhebung</div>
+      </div>
+      <p>Die App erhebt keine personenbezogenen Daten, nutzt keine Analyse-Tools, keine Werbung und keine Tracking-Dienste. Es werden keine Nutzungsstatistiken gesammelt.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📬</div>
+        <div class="card-title">Kontakt</div>
+      </div>
+      <p>Bei Fragen zur Datenschutzerklärung wenden Sie sich bitte an:</p>
+      <div class="highlight">eure-digital-shop · GitHub: github.com/eure-digital-shop<br>📧 <a href="mailto:euredigitalshop@gmail.com">euredigitalshop@gmail.com</a></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ ENGLISH ═══════════════ -->
+  <div class="lang-section" id="lang-en">
+    <div class="section-title">Privacy Policy</div>
+    <div class="section-subtitle">Holzrechner · Timber Calculator · 2025</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Overview</div>
+      </div>
+      <p>This app (Holzrechner / Timber Calculator) was developed to calculate wood quantities and manage inventory. Protecting your data is important to us. This privacy policy explains what data the app processes.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💾</div>
+        <div class="card-title">Stored Data</div>
+      </div>
+      <p>The app stores only the following data <strong>locally on your device</strong>:</p>
+      <ul>
+        <li>Order numbers and customer names</li>
+        <li>Wood measurements (thickness, length, width)</li>
+        <li>Inventory data (battens, solid wood, boards)</li>
+        <li>App settings (language, theme)</li>
+        <li>Exported PDF and Excel files in the Downloads folder</li>
+      </ul>
+      <div class="highlight">✅ No data is transmitted to external servers or third parties.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📁</div>
+        <div class="card-title">Storage Access</div>
+      </div>
+      <p>The app requires access to device storage exclusively to create PDF and Excel files in the Downloads folder. This access is used only for file export.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">No Data Collection</div>
+      </div>
+      <p>The app does not collect personal data, does not use analytics tools, advertising, or tracking services. No usage statistics are collected.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📬</div>
+        <div class="card-title">Contact</div>
+      </div>
+      <p>For questions about this privacy policy, please contact:</p>
+      <div class="highlight">eure-digital-shop · GitHub: github.com/eure-digital-shop<br>📧 <a href="mailto:euredigitalshop@gmail.com">euredigitalshop@gmail.com</a></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ ROMÂNĂ ═══════════════ -->
+  <div class="lang-section" id="lang-ro">
+    <div class="section-title">Politica de confidențialitate</div>
+    <div class="section-subtitle">Holzrechner · Timber Calculator · 2025</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Prezentare generală</div>
+      </div>
+      <p>Această aplicație (Holzrechner / Timber Calculator) a fost dezvoltată pentru a calcula cantitățile de lemn și a gestiona inventarul. Protecția datelor dumneavoastră este importantă pentru noi.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💾</div>
+        <div class="card-title">Date stocate</div>
+      </div>
+      <p>Aplicația stochează exclusiv următoarele date <strong>local pe dispozitivul dvs.</strong>:</p>
+      <ul>
+        <li>Numere de comandă și nume de clienți</li>
+        <li>Măsurători lemn (grosime, lungime, lățime)</li>
+        <li>Date de inventar (kanteli, lemn masiv, plăci)</li>
+        <li>Setări aplicație (limbă, temă)</li>
+        <li>Fișiere PDF și Excel exportate în folderul Downloads</li>
+      </ul>
+      <div class="highlight">✅ Nu se transmit date către servere externe sau terți.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📁</div>
+        <div class="card-title">Acces la stocare</div>
+      </div>
+      <p>Aplicația necesită acces la stocarea dispozitivului exclusiv pentru a crea fișiere PDF și Excel în folderul Downloads.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Fără colectare de date</div>
+      </div>
+      <p>Aplicația nu colectează date cu caracter personal, nu utilizează instrumente de analiză, publicitate sau servicii de urmărire.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📬</div>
+        <div class="card-title">Contact</div>
+      </div>
+      <div class="highlight">eure-digital-shop · GitHub: github.com/eure-digital-shop<br>📧 <a href="mailto:euredigitalshop@gmail.com">euredigitalshop@gmail.com</a></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ РУССКИЙ ═══════════════ -->
+  <div class="lang-section" id="lang-ru">
+    <div class="section-title">Политика конфиденциальности</div>
+    <div class="section-subtitle">Holzrechner · Timber Calculator · 2025</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Обзор</div>
+      </div>
+      <p>Это приложение (Holzrechner / Timber Calculator) разработано для расчёта объёмов древесины и управления инвентарём. Защита ваших данных важна для нас.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💾</div>
+        <div class="card-title">Хранимые данные</div>
+      </div>
+      <p>Приложение хранит только следующие данные <strong>локально на вашем устройстве</strong>:</p>
+      <ul>
+        <li>Номера заказов и имена клиентов</li>
+        <li>Размеры древесины (толщина, длина, ширина)</li>
+        <li>Данные инвентаря (брус, массив, доски)</li>
+        <li>Настройки приложения (язык, тема)</li>
+        <li>Экспортированные файлы PDF и Excel в папке Загрузки</li>
+      </ul>
+      <div class="highlight">✅ Никакие данные не передаются на внешние серверы или третьим лицам.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📁</div>
+        <div class="card-title">Доступ к памяти</div>
+      </div>
+      <p>Приложению необходим доступ к памяти устройства исключительно для создания файлов PDF и Excel в папке Загрузки.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Без сбора данных</div>
+      </div>
+      <p>Приложение не собирает персональные данные, не использует аналитические инструменты, рекламу или службы отслеживания.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📬</div>
+        <div class="card-title">Контакт</div>
+      </div>
+      <div class="highlight">eure-digital-shop · GitHub: github.com/eure-digital-shop<br>📧 <a href="mailto:euredigitalshop@gmail.com">euredigitalshop@gmail.com</a></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FRANÇAIS ═══════════════ -->
+  <div class="lang-section" id="lang-fr">
+    <div class="section-title">Politique de confidentialité</div>
+    <div class="section-subtitle">Holzrechner · Timber Calculator · 2025</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Aperçu</div>
+      </div>
+      <p>Cette application (Holzrechner / Timber Calculator) a été développée pour calculer les quantités de bois et gérer l'inventaire. La protection de vos données est importante pour nous.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💾</div>
+        <div class="card-title">Données stockées</div>
+      </div>
+      <p>L'application stocke uniquement les données suivantes <strong>localement sur votre appareil</strong> :</p>
+      <ul>
+        <li>Numéros de commande et noms de clients</li>
+        <li>Mesures de bois (épaisseur, longueur, largeur)</li>
+        <li>Données d'inventaire (tasseaux, bois massif, panneaux)</li>
+        <li>Paramètres de l'application (langue, thème)</li>
+        <li>Fichiers PDF et Excel exportés dans le dossier Téléchargements</li>
+      </ul>
+      <div class="highlight">✅ Aucune donnée n'est transmise à des serveurs externes ou à des tiers.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📁</div>
+        <div class="card-title">Accès au stockage</div>
+      </div>
+      <p>L'application nécessite l'accès au stockage de l'appareil exclusivement pour créer des fichiers PDF et Excel dans le dossier Téléchargements.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Pas de collecte de données</div>
+      </div>
+      <p>L'application ne collecte pas de données personnelles, n'utilise pas d'outils d'analyse, de publicité ou de services de suivi.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📬</div>
+        <div class="card-title">Contact</div>
+      </div>
+      <div class="highlight">eure-digital-shop · GitHub: github.com/eure-digital-shop<br>📧 <a href="mailto:euredigitalshop@gmail.com">euredigitalshop@gmail.com</a></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ ITALIANO ═══════════════ -->
+  <div class="lang-section" id="lang-it">
+    <div class="section-title">Informativa sulla privacy</div>
+    <div class="section-subtitle">Holzrechner · Timber Calculator · 2025</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Panoramica</div>
+      </div>
+      <p>Questa app (Holzrechner / Timber Calculator) è stata sviluppata per calcolare le quantità di legno e gestire l'inventario. La protezione dei tuoi dati è importante per noi.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💾</div>
+        <div class="card-title">Dati memorizzati</div>
+      </div>
+      <p>L'app memorizza solo i seguenti dati <strong>localmente sul tuo dispositivo</strong>:</p>
+      <ul>
+        <li>Numeri d'ordine e nomi dei clienti</li>
+        <li>Misure del legno (spessore, lunghezza, larghezza)</li>
+        <li>Dati di inventario (listelli, legno massiccio, pannelli)</li>
+        <li>Impostazioni dell'app (lingua, tema)</li>
+        <li>File PDF ed Excel esportati nella cartella Download</li>
+      </ul>
+      <div class="highlight">✅ Nessun dato viene trasmesso a server esterni o terze parti.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📁</div>
+        <div class="card-title">Accesso alla memoria</div>
+      </div>
+      <p>L'app richiede l'accesso alla memoria del dispositivo esclusivamente per creare file PDF ed Excel nella cartella Download.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Nessuna raccolta dati</div>
+      </div>
+      <p>L'app non raccoglie dati personali, non utilizza strumenti di analisi, pubblicità o servizi di tracciamento.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📬</div>
+        <div class="card-title">Contatto</div>
+      </div>
+      <div class="highlight">eure-digital-shop · GitHub: github.com/eure-digital-shop<br>📧 <a href="mailto:euredigitalshop@gmail.com">euredigitalshop@gmail.com</a></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ ESPAÑOL ═══════════════ -->
+  <div class="lang-section" id="lang-es">
+    <div class="section-title">Política de privacidad</div>
+    <div class="section-subtitle">Holzrechner · Timber Calculator · 2025</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Descripción general</div>
+      </div>
+      <p>Esta aplicación (Holzrechner / Timber Calculator) fue desarrollada para calcular cantidades de madera y gestionar el inventario. La protección de sus datos es importante para nosotros.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💾</div>
+        <div class="card-title">Datos almacenados</div>
+      </div>
+      <p>La aplicación almacena solo los siguientes datos <strong>localmente en su dispositivo</strong>:</p>
+      <ul>
+        <li>Números de pedido y nombres de clientes</li>
+        <li>Medidas de madera (grosor, longitud, ancho)</li>
+        <li>Datos de inventario (listones, madera maciza, tableros)</li>
+        <li>Configuración de la aplicación (idioma, tema)</li>
+        <li>Archivos PDF y Excel exportados en la carpeta Descargas</li>
+      </ul>
+      <div class="highlight">✅ No se transmiten datos a servidores externos ni a terceros.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📁</div>
+        <div class="card-title">Acceso al almacenamiento</div>
+      </div>
+      <p>La aplicación requiere acceso al almacenamiento del dispositivo exclusivamente para crear archivos PDF y Excel en la carpeta Descargas.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Sin recopilación de datos</div>
+      </div>
+      <p>La aplicación no recopila datos personales, no utiliza herramientas de análisis, publicidad ni servicios de seguimiento.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📬</div>
+        <div class="card-title">Contacto</div>
+      </div>
+      <div class="highlight">eure-digital-shop · GitHub: github.com/eure-digital-shop<br>📧 <a href="mailto:euredigitalshop@gmail.com">euredigitalshop@gmail.com</a></div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <p>🌲 Holzrechner / Timber Calculator &nbsp;·&nbsp; © 2025 eure-digital-shop</p>
+  <p style="margin-top:6px; opacity:0.6;">github.com/eure-digital-shop/holzrechner</p>
+</footer>
+
+<script>
+  function setLang(code) {
+    document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('lang-' + code).classList.add('active');
+    event.target.classList.add('active');
+    document.documentElement.lang = code;
+  }
+</script>
+
+</body>
+</html>
